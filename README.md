@@ -8,11 +8,11 @@
 
 <a href="https://alystria-ai.github.io/"><img src="assets/banner.svg" width="100%" alt="Alystria: AI characters with presence. Game companions, chess coaches, desktop pets. Free and open." /></a>
 
-<a href="https://alystria-ai.github.io/"><img src="assets/badge-website.svg" height="40" alt="Website" /></a>&nbsp;&nbsp;<a href="https://www.youtube.com/@AlystriaAI"><img src="assets/badge-youtube.svg" height="40" alt="YouTube" /></a>&nbsp;&nbsp;<a href="https://www.patreon.com/cw/AlystriaAI"><img src="assets/badge-patreon.svg" height="40" alt="Patreon" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/alystria-ai/"><img src="assets/badge-linkedin.svg" height="40" alt="LinkedIn" /></a>
+<a href="https://alystria-ai.github.io/"><img src="assets/badge-website.svg" height="40" alt="Website" /></a>&nbsp;&nbsp;<a href="https://www.youtube.com/@AlystriaAI"><img src="assets/badge-youtube.svg" height="40" alt="YouTube" /></a>&nbsp;&nbsp;<a href="https://www.patreon.com/cw/AlystriaAI"><img src="assets/badge-patreon.svg" height="40" alt="Patreon" /></a>&nbsp;&nbsp;<a href="https://discord.gg/3p2FzjZQZ"><img src="assets/badge-discord.svg" height="40" alt="Discord" /></a>
 
 ### Characters that listen, answer in their own voice, remember you,<br/>and notice what is happening around them.
 
-<sub>Made by one person. Released for free. Code you can read.</sub>
+<sub>Made by one person. Released for free. Code you can read.<br/>Also on <a href="https://x.com/AlystriaAi">X</a> and <a href="https://www.linkedin.com/company/alystria-ai/">LinkedIn</a>.</sub>
 
 </div>
 
@@ -58,6 +58,29 @@ A chess game you can talk through, with four animated coaches, voice chat, puzzl
 Pets that live on your desktop, remember you (if you let them), set reminders and take a look at your screen when you ask.
 
 <sub>More is on the way. The best place to see it first is <a href="https://www.youtube.com/@AlystriaAI">YouTube</a>.</sub>
+
+## ✦ See them move
+
+<table>
+<tr>
+<td width="25%" valign="top">
+<a href="https://www.youtube.com/watch?v=K1X4xf-1i_8"><img src="https://i.ytimg.com/vi/K1X4xf-1i_8/mqdefault.jpg" width="100%" alt="Video: I made an AI companion mod for The Blood of Dawnwalker" /></a>
+<sub>Companion mod for The Blood of Dawnwalker</sub>
+</td>
+<td width="25%" valign="top">
+<a href="https://www.youtube.com/watch?v=px4uvyvp_8s"><img src="https://i.ytimg.com/vi/px4uvyvp_8s/mqdefault.jpg" width="100%" alt="Video: horde battles, first-person POV and more in AI NPC Companions System v0.5" /></a>
+<sub>Horde battles, first-person POV and more</sub>
+</td>
+<td width="25%" valign="top">
+<a href="https://www.youtube.com/watch?v=cvCYvvUymWw"><img src="https://i.ytimg.com/vi/cvCYvvUymWw/mqdefault.jpg" width="100%" alt="Video: AI chess coaches that actually understand your game" /></a>
+<sub>AI chess coaches that understand your game</sub>
+</td>
+<td width="25%" valign="top">
+<a href="https://www.youtube.com/watch?v=eLBwrMCXCeE"><img src="https://i.ytimg.com/vi/eLBwrMCXCeE/mqdefault.jpg" width="100%" alt="Video: AI desktop pets" /></a>
+<sub>AI desktop pets</sub>
+</td>
+</tr>
+</table>
 
 ## ✦ How they're made
 
