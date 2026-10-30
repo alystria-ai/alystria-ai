@@ -164,10 +164,11 @@ def bubble(lines, x, y, dur, size=17, pad=16, tail_x=None, char_w=0.5):
 # ── banner ────────────────────────────────────────────────────────────────
 
 def banner():
+    """Slim banner (1280x250), short enough to keep the contribution graph in view."""
     rng = random.Random(7)
-    W, H = 1280, 400
+    W, H = 1280, 250
     clouds = []
-    for cx, cy, rx, ry, dur, op in [(200, 90, 260, 60, 70, -0.4), (900, 260, 320, 70, 90, -0.6), (500, 360, 260, 50, 80, -0.2)]:
+    for cx, cy, rx, ry, dur, op in [(200, 60, 260, 46, 70, -0.4), (900, 170, 320, 52, 90, -0.6), (500, 230, 260, 40, 80, -0.2)]:
         clouds.append(
             f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="url(#cloud)" filter="url(#blur)">'
             f'<animateTransform attributeName="transform" type="translate" values="-160 0;160 0;-160 0" dur="{dur}s" begin="{op * dur}s" repeatCount="indefinite"/></ellipse>'
@@ -189,15 +190,14 @@ def banner():
   <rect width="{W}" height="{H}" fill="url(#sky)"/>
   <rect width="{W}" height="{H}" fill="url(#warm)"/>
   <rect width="{W}" height="{H}" fill="url(#cool)"/>
-  {stars(rng, 90, W, H, 330)}
+  {stars(rng, 70, W, H, 210)}
   {"".join(clouds)}
-  {mane(rng, 26, W, H, 0.86, 0.62, 150, "mane", "maneMask")}
-  <text x="76" y="92" font-family="{MONO}" font-size="15" letter-spacing="3.5" fill="{MUTED}">AN INDEPENDENT STUDIO OF ONE</text>
-  <text x="70" y="222" font-family="{SERIF}" font-size="132" letter-spacing="-3" fill="url(#word)">Alystria</text>
-  <text x="76" y="282" font-family="{SERIF}" font-size="36" fill="{INK}">AI characters with <tspan font-style="italic" fill="{PEACH}">presence.</tspan></text>
-  <text x="77" y="334" font-family="{MONO}" font-size="15" fill="{MUTED}">game companions <tspan fill="{VIOLET}">✦</tspan> chess coaches <tspan fill="{VIOLET}">✦</tspan> desktop pets <tspan fill="{VIOLET}">✦</tspan> free &amp; open</text>
-  <g transform="translate(1110 236)">{lys("ly", 1.55)}</g>
-  {bubble(["hi! I'm Lys.", "I live here.", "everything here is free.", "the code is open, too.", "throw me on the website!"], 930, 104, 15, size=19, tail_x=1112)}
+  {mane(rng, 24, W, H, 0.9, 0.66, 96, "mane", "maneMask", amp=(10, 28))}
+  <text x="76" y="58" font-family="{MONO}" font-size="15" letter-spacing="1" fill="{MUTED}">game companions <tspan fill="{VIOLET}">✦</tspan> chess coaches <tspan fill="{VIOLET}">✦</tspan> desktop pets <tspan fill="{VIOLET}">✦</tspan> free &amp; open</text>
+  <text x="70" y="160" font-family="{SERIF}" font-size="112" letter-spacing="-3" fill="url(#word)">Alystria</text>
+  <text x="76" y="208" font-family="{SERIF}" font-size="30" fill="{INK}">AI characters with <tspan font-style="italic" fill="{PEACH}">presence.</tspan></text>
+  <g transform="translate(1120 158)">{lys("ly", 1.3)}</g>
+  {bubble(["hi! I'm Lys.", "I live here.", "everything here is free.", "the code is open, too.", "throw me on the website!"], 930, 30, 15, size=18, tail_x=1122)}
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="25.5" fill="none" stroke="#bccdff" stroke-opacity=".16" stroke-width="1.5"/>
 </svg>"""
@@ -393,10 +393,6 @@ def badge(name, label, color, width):
 
 if __name__ == "__main__":
     banner()
-    divider()
-    card_games()
-    card_chess()
-    card_pets()
     badge("website", "Website", CYAN, 150)
     badge("youtube", "YouTube", "#ff6b8b", 150)
     badge("patreon", "Patreon", PEACH, 146)
