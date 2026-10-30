@@ -202,9 +202,6 @@ def contributions():
 
 def lys_bubble():
     lines = ["hi! I'm Lys.", "I live here.", "everything here is free.", "the code is open, too.", "throw me on the website!"]
-    n = contributions()
-    if n:
-        lines.insert(1, f"{n:,} contributions in the last year!")
     size = 18
     widest = max(len(s) for s in lines) * size * 0.5 + 32
     return bubble(lines, 1240 - widest, 30, 3 * len(lines), size=size, tail_x=1122)
@@ -423,11 +420,16 @@ ICONS = {
     "youtube": '<rect x="2" y="5" width="20" height="14" rx="4.5" fill="currentColor"/><path d="M10 9l5 3-5 3z" fill="#141c48"/>',
     "patreon": '<circle cx="14.5" cy="9.5" r="6.5" fill="currentColor"/><rect x="3" y="3" width="3.6" height="18" rx="1" fill="currentColor"/>',
     "discord": '<path d="M4 6.5A3.5 3.5 0 0 1 7.5 3h9A3.5 3.5 0 0 1 20 6.5v7a3.5 3.5 0 0 1-3.5 3.5H11l-4.5 4v-4A3.5 3.5 0 0 1 4 13.5z" fill="currentColor"/><circle cx="9.3" cy="10" r="1.5" fill="#141c48"/><circle cx="14.7" cy="10" r="1.5" fill="#141c48"/>',
+    "contributions": "".join(
+        f'<rect x="{2 + c * 7}" y="{3 + r * 7}" width="5.5" height="5.5" rx="1.4" fill="currentColor" opacity="{o}"/>'
+        for r, row in enumerate([(".35", "1", ".6"), ("1", ".5", "1"), (".6", "1", ".35")]) for c, o in enumerate(row)
+    ),
     "linkedin": '<rect x="2.5" y="2.5" width="19" height="19" rx="4" fill="currentColor"/><path d="M7 10v7M7 7v.01M11 17v-7m0 3.2c0-2 1.3-3.2 2.9-3.2 1.6 0 2.6 1 2.6 3.2V17" stroke="#141c48" stroke-width="2.2" stroke-linecap="round" fill="none"/>',
 }
 
 
-def badge(name, label, color, width):
+def badge(name, label, color, width=None):
+    width = width or round(54 + len(label) * 10.6 + 22)
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} 56" width="{width}" height="56" role="img" aria-label="{label}">
 <defs>{iris_gradient("bd", width * 2, 8)}</defs>
 <rect x="1.5" y="1.5" width="{width - 3}" height="53" rx="26.5" fill="#141c48"/>
@@ -444,5 +446,8 @@ if __name__ == "__main__":
     badge("youtube", "YouTube", "#ff6b8b", 150)
     badge("patreon", "Patreon", PEACH, 146)
     badge("discord", "Discord", VIOLET, 146)
+    n = contributions()
+    if n:
+        badge("contributions", f"{n:,} contributions", "#56d364")
     for p in sorted(OUT.glob("*.svg")):
         print(f"{p.name:24} {p.stat().st_size:>7,} bytes")

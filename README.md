@@ -8,7 +8,7 @@
 
 <a href="https://alystria-ai.github.io/"><img src="assets/banner.svg" width="100%" alt="Alystria: AI characters with presence. Game companions, chess coaches, desktop pets. Free and open." /></a>
 
-<a href="https://alystria-ai.github.io/"><img src="assets/badge-website.svg" height="36" alt="Website" /></a>&nbsp;&nbsp;<a href="https://www.youtube.com/@AlystriaAI"><img src="assets/badge-youtube.svg" height="36" alt="YouTube" /></a>&nbsp;&nbsp;<a href="https://www.patreon.com/cw/AlystriaAI"><img src="assets/badge-patreon.svg" height="36" alt="Patreon" /></a>&nbsp;&nbsp;<a href="https://discord.gg/3p2FzjZQZ"><img src="assets/badge-discord.svg" height="36" alt="Discord" /></a>
+<a href="https://alystria-ai.github.io/"><img src="assets/badge-website.svg" height="36" alt="Website" /></a>&nbsp;&nbsp;<a href="https://www.youtube.com/@AlystriaAI"><img src="assets/badge-youtube.svg" height="36" alt="YouTube" /></a>&nbsp;&nbsp;<a href="https://www.patreon.com/cw/AlystriaAI"><img src="assets/badge-patreon.svg" height="36" alt="Patreon" /></a>&nbsp;&nbsp;<a href="https://discord.gg/p4pxQhAvJ"><img src="assets/badge-discord.svg" height="36" alt="Discord" /></a>&nbsp;&nbsp;<a href="https://github.com/alystria-ai"><img src="assets/badge-contributions.svg" height="36" alt="Contributions in the last year" /></a>
 
 <sub>Characters that listen, talk back in their own voice and remember you. Made by one person, released for free, code you can read.</sub>
 

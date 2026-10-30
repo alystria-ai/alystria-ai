@@ -1,4 +1,4 @@
-# Refreshes the contribution count in Lys's speech bubble (assets/banner.svg).
+# Refreshes the contribution count badge (assets/badge-contributions.svg).
 name: Refresh banner
 
 on:
