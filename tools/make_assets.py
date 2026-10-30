@@ -5,12 +5,18 @@
 Everything is plain SVG + SMIL so it animates inside GitHub's <img> sandbox:
 no scripts, no external fonts. Randomness is seeded, so output is stable.
 """
+import json
 import math
+import os
 import random
+import subprocess
+import urllib.request
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "assets"
 OUT.mkdir(exist_ok=True)
+LOGIN = "alystria-ai"
+STATS = OUT / "stats.json"
 
 CYAN, BLUE, VIOLET, PINK, PEACH = "#6fe7ff", "#6aa8ff", "#a77bff", "#ff7ad9", "#f3b9a6"
 INK, MUTED = "#eef1ff", "#a7b2d9"
@@ -161,7 +167,48 @@ def bubble(lines, x, y, dur, size=17, pad=16, tail_x=None, char_w=0.5):
     return "".join(out)
 
 
+# ── live data ─────────────────────────────────────────────────────────────
+
+def contributions():
+    """Contributions in the last year, as the profile graph counts them.
+
+    Uses GITHUB_TOKEN / GH_TOKEN (the Actions workflow), else the gh CLI, else the last saved value."""
+    query = '{ user(login: "%s") { contributionsCollection { contributionCalendar { totalContributions } } } }' % LOGIN
+    data = None
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    try:
+        if token:
+            req = urllib.request.Request(
+                "https://api.github.com/graphql",
+                data=json.dumps({"query": query}).encode(),
+                headers={"Authorization": f"bearer {token}", "User-Agent": "alystria-profile"},
+            )
+            data = json.load(urllib.request.urlopen(req, timeout=20))
+        else:
+            out = subprocess.run(["gh", "api", "graphql", "-f", f"query={query}"], capture_output=True, text=True, timeout=30)
+            data = json.loads(out.stdout) if out.returncode == 0 else None
+        n = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+        STATS.write_text(json.dumps({"contributions": n}) + "\n", encoding="utf-8")
+        return n
+    except Exception as e:  # offline or no token: keep the last known number
+        print(f"contributions: using saved value ({e.__class__.__name__})")
+        try:
+            return json.loads(STATS.read_text(encoding="utf-8"))["contributions"]
+        except Exception:
+            return None
+
+
 # ── banner ────────────────────────────────────────────────────────────────
+
+def lys_bubble():
+    lines = ["hi! I'm Lys.", "I live here.", "everything here is free.", "the code is open, too.", "throw me on the website!"]
+    n = contributions()
+    if n:
+        lines.insert(1, f"{n:,} contributions in the last year!")
+    size = 18
+    widest = max(len(s) for s in lines) * size * 0.5 + 32
+    return bubble(lines, 1240 - widest, 30, 3 * len(lines), size=size, tail_x=1122)
+
 
 def banner():
     """Slim banner (1280x250), short enough to keep the contribution graph in view."""
@@ -197,7 +244,7 @@ def banner():
   <text x="70" y="160" font-family="{SERIF}" font-size="112" letter-spacing="-3" fill="url(#word)">Alystria</text>
   <text x="76" y="208" font-family="{SERIF}" font-size="30" fill="{INK}">AI characters with <tspan font-style="italic" fill="{PEACH}">presence.</tspan></text>
   <g transform="translate(1120 158)">{lys("ly", 1.3)}</g>
-  {bubble(["hi! I'm Lys.", "I live here.", "everything here is free.", "the code is open, too.", "throw me on the website!"], 930, 30, 15, size=18, tail_x=1122)}
+  {lys_bubble()}
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="25.5" fill="none" stroke="#bccdff" stroke-opacity=".16" stroke-width="1.5"/>
 </svg>"""
